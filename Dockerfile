@@ -3,9 +3,11 @@ FROM ubuntu:22.04
 
 RUN apt-get update && apt-get upgrade -y
 
-# install useful command 
-RUN apt-get install build-essential tmux wget curl tree bat git ripgrep fd-find fzf -y
+# install command
+RUN apt-get install build-essential tmux wget curl tree bat git ripgrep fd-find fzf python3-pip -y 
 
+
+WORKDIR /root
 
 # nodejs 
 RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&  \
@@ -13,7 +15,12 @@ RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&  \
 
 RUN npm install -g tree-sitter-cli neovim
 
-WORKDIR /root
+# python
+
+RUN python3 -m pip install --upgrade pynvim
+
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
 
 RUN mkdir download
 
@@ -25,4 +32,4 @@ RUN cd download && wget https://github.com/neovim/neovim/releases/download/stabl
 COPY nvim /root/.config/nvim
 
 
-CMD ["bash.sh"]
+CMD ["nvim"]
