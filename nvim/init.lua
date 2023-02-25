@@ -26,6 +26,8 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
+  -- install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = { enabled = true }, -- automatically check for plugin updates
   -- NOTE: First, some plugins that don't require any configuration
   {
     'nvim-tree/nvim-tree.lua',
@@ -103,6 +105,13 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'tokyonight'
     end,
+    opts = {
+      transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+    },
   },
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -110,7 +119,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
