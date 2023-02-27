@@ -105,13 +105,6 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'tokyonight'
     end,
-    opts = {
-      transparent = true,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
-    },
   },
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -120,8 +113,8 @@ require('lazy').setup({
       options = {
         icons_enabled = false,
         theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
+        -- component_separators = '|',
+        -- section_separators = '',
       },
     },
   },
