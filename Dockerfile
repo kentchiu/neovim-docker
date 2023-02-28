@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get upgrade -y
 
 # install command
-RUN apt-get install build-essential tmux wget curl tree bat git ripgrep fd-find fzf python3-pip -y 
+RUN apt-get install build-essential tmux wget curl tree bat git ripgrep fd-find fzf python3-pip unzip tar zip unzip gzip -y 
 
 
 WORKDIR /root
@@ -20,7 +20,6 @@ RUN npm install -g tree-sitter-cli neovim
 RUN python3 -m pip install --upgrade pynvim
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
-
 
 RUN mkdir download
 
