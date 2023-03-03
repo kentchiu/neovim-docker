@@ -110,8 +110,10 @@ vim.keymap.set('v', '<leader>ds', '<cmd>lua require("dap-python").debug_selectio
         request = 'launch',
         module = 'uvicorn',
         args = {
-            "index:app",
-            "--reload",
+	  "stock.main:app",
+	   "--reload", 
+	   "--port",
+	   "8888"
         },
         console = "integratedTerminal"
     },
@@ -124,7 +126,7 @@ vim.keymap.set('v', '<leader>ds', '<cmd>lua require("dap-python").debug_selectio
             port = 5678,
         }
     }
-  }	
+  }
 
   -- local dap = require "dap"
 
