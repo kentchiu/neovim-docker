@@ -12,6 +12,6 @@ return {
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
   },
-
+  {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
 
 }
