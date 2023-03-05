@@ -21,14 +21,20 @@ RUN python3 -m pip install --upgrade pynvim
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-RUN mkdir download
 
 # install nvim 0.8.3
-RUN cd download && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \
+RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \
   apt install ./nvim-linux64.deb
 
-# based on kickstart.nvim
-COPY nvim /root/.config/nvim
 
+# Custom cache invalidation
+ARG CACHEBUST=1
+
+RUN echo "CACHEBUST=${CACHEBUST}"
+
+# based on kickstart.nvim
+COPY . /root/.config/neovim_docker
+
+RUN ln -sf /root/.config/neovim_docker/nvim /root/.config/nvim
 
 CMD ["nvim"]

@@ -5,7 +5,7 @@ Config neovim as PDE in docker
 ## Build
 
 ```bash
-docker build . -t kentchiu/pde
+docker build -t kentchiu/pde --build-arg CACHEBUST=$(date +%s) . 
 ```
 
 ## Run
@@ -20,3 +20,9 @@ docker run -v pde:/root -p 5173:5173 -ti kentchiu/pde bash
 ```
 
 
+## Reset
+
+```bash
+docker rm -f $(docker ps -a -q)
+docker volume rm -f pde
+```
