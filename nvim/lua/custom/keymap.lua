@@ -107,6 +107,8 @@ if vim.fn.has 'nvim-0.9.0' == 1 then
   vim.keymap.set('n', '<leader>ui', vim.show_pos, { desc = 'Inspect Pos' })
 end
 
+vim.keymap.set('n', '<leader>uw', '<cmd>set wrap!', { desc = 'Toggle Word Wrap' })
+
 -- c-v conflict with windows paste shortcut
 vim.keymap.set('n', '<leader>cc', '<c-v>', { desc = 'Column Mode' })
 
