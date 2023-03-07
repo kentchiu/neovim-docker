@@ -16,7 +16,7 @@ docker volume create pde
 ```
 
 ```bash
-docker run -v pde:/root -p 5173:5173 -ti kentchiu/pde bash
+docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -p 5173:5173 -p 4200:4200 -v pde:/root -v /home/kent/.ssh:/root/.ssh -ti kentchiu/pde
 ```
 
 
@@ -30,11 +30,11 @@ docker volume rm -f pde
 
 ## TODO
 
-- [] command history
+- [x] command history
 - [] focus on curren buffer when toggle nvim-tree
 - [] code format (ts)
 - [] code indent not in position(ts)
-- [] keymap ft (find terminal) not work
+- [x] keymap ft (find terminal) not work
 - [] keymap uw (toggle word wrap)
 - [] search highlight (/)
 - [] jk not map to esc

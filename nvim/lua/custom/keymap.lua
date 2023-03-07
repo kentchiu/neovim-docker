@@ -1,4 +1,5 @@
 -- [[ Basic Keymaps ]]
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
