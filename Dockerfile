@@ -69,4 +69,7 @@ RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
 
 RUN echo "alias vi='nvim'" >> ~/.zshrc
 
+# change default shell to zsh
+RUN chsh -s $(which zsh)
+
 CMD ["zsh"]
