@@ -26,3 +26,15 @@ docker run -v pde:/root -p 5173:5173 -ti kentchiu/pde bash
 docker rm -f $(docker ps -a -q)
 docker volume rm -f pde
 ```
+
+
+## TODO
+
+- [] command history
+- [] focus on curren buffer when toggle nvim-tree
+- [] code format (ts)
+- [] code indent not in position(ts)
+- [] keymap ft (find terminal) not work
+- [] keymap uw (toggle word wrap)
+- [] search highlight (/)
+- [] jk not map to esc
