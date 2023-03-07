@@ -4,12 +4,15 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get upgrade -y
 
 # install command
-RUN apt-get install build-essential tmux wget curl tree bat git \
+RUN apt-get install build-essential zsh tmux wget curl tree bat git \
   ripgrep fd-find fzf python3-pip unzip tar zip unzip gzip locales -y 
 
 RUN locale-gen en_US.UTF-8
 
 WORKDIR /root
+
+# oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # nodejs 
 RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&  \
@@ -17,12 +20,16 @@ RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&  \
 
 RUN npm install -g tree-sitter-cli neovim
 
+
+
 # python
 
 RUN python3 -m pip install --upgrade pynvim
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
+# config poetry to use in project venv 
+RUN /root/.local/bin/poetry config virtualenvs.in-project true
 
 # install nvim 0.8.3
 RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \
@@ -33,25 +40,33 @@ RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nv
 #   unzip JetBrainsMono.zip
 
 # fix utf-8 and color issue
-RUN echo "alias tmux='tmux -u2'" >> ~/.bashrc
-RUN echo "alias vi='nvim'" >> ~/.bashrc
-RUN echo "export PATH=/root/.local/bin:$PATH" >> ~/.bashrc
+#RUN echo "alias tmux='tmux -u2'" >> ~/.bashrc
+#RUN echo "alias vi='nvim'" >> ~/.bashrc
+#RUN echo "export PATH=/root/.local/bin:$PATH" >> ~/.bashrc
 
-# config poetry to use in project venv 
-RUN poetry config virtualenvs.in-project true
 
 # Custom cache invalidation
-ARG CACHEBUST=1
-RUN echo "CACHEBUST=${CACHEBUST}"
+# ARG CACHEBUST=1
+# RUN echo "CACHEBUST=${CACHEBUST}"
 
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 RUN git clone https://github.com/kentchiu/dotfile.git /root/.config/dotfile
 RUN git clone https://github.com/kentchiu/neovim_docker.git /root/.config/neovim_docker
 
-RUN ln -sf /root/.config/neovim_docker/nvim /root/.config/nvim
-RUN ln -sf /root/.config/dotfile/.tmux.conf /root/.tmux.conf
-# RUN source /root/.tmux.conf
 
+RUN ln -sf /root/.config/neovim_docker/nvim /root/.config/nvim \
+  && ln -sf /root/.config/dotfile/.gitconfig /root/.gitconfig \
+  && ln -sf /root/.config/dotfile/.tmux.conf /root/.tmux.conf \
+  && ln -sf /root/.config/dotfile/.vimrc /root/.vimrc
+# && ln -sf /root/.config/dotfile/.zshrc /root/.zshrc 
 
-CMD ["nvim"]
+# set up oh-my-zsh
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+RUN sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
+
+RUN echo "alias vi='nvim'" >> ~/.bashrc
+
+CMD ["zsh"]
