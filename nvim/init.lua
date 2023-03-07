@@ -422,12 +422,36 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+--  LSP server list:
+--  https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
+  tailwindcss = {},
+  html = {},
+  angularls={},
+  cssls={},
+  -- denols={},
+  -- eslint={},
+  -- emmet_ls={},
+  -- gradle_ls={},
+  -- graphql={},
+  -- groovy={},
+  -- jsonls={},
+  -- jdtls={},
+  -- marksman={}, markdown
+  -- jdtls={},
+  -- powershell_es={},
+  -- sqlls={}, sql
+  -- svelte={},
+  -- taplo={}, toml
+  -- lemminx={}, xml
+  -- yamlls={}, yml
+  -- svelte={},
+
 
   lua_ls = {
     Lua = {
