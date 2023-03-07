@@ -67,6 +67,6 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTO
 RUN sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
 
-RUN echo "alias vi='nvim'" >> ~/.bashrc
+RUN echo "alias vi='nvim'" >> ~/.zshrc
 
 CMD ["zsh"]
