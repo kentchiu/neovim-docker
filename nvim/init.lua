@@ -314,7 +314,23 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline', 'http', 'json', 'sql' },
+  ensure_installed = { 
+    'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline', 'http', 'json', 'sql',
+    'bash',
+    'css',
+    'diff',
+    'dockerfile',
+    'dot',
+    'jq',
+    'jsdoc',
+    'json5',
+    'make',
+    'python',
+    'regex',
+    'scss',
+    'toml',
+    'yaml',
+  },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
