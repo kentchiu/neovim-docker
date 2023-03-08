@@ -32,8 +32,12 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN /root/.local/bin/poetry config virtualenvs.in-project true
 
 # install nvim 0.8.3
-RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \
-  apt install ./nvim-linux64.deb
+# RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb \
+#   && apt install ./nvim-linux64.deb
+
+# install nvim 0.9.x
+RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb \
+  && apt install ./nvim-linux64.deb
 
 # install lazygit 
 RUN cd /tmp && LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
