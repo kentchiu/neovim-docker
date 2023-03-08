@@ -185,6 +185,15 @@ require('lazy').setup({
     end,
   },
 
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    config = function()
+      require("lspsaga").setup({})
+    end,
+    dependencies = { {"nvim-tree/nvim-web-devicons"} }
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -304,7 +313,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'python',  'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -390,21 +399,21 @@ local on_attach = function(_, bufnr)
   end
 
   -- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
-  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
-  nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
-  nmap('<leader>gt', vim.lsp.buf.type_definition, 'Type Definition')
-  nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
-  nmap('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+  -- nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+  --
+  -- nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  -- nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  -- nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
+  -- nmap('<leader>gt', vim.lsp.buf.type_definition, 'Type Definition')
+  -- nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+  -- nmap('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('cs', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  -- nmap('cs', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+  -- nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
   -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
   -- nmap('<leader>wl', function()
