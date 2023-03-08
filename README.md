@@ -33,8 +33,10 @@ docker volume rm -f pde
 - [x] command history
 - [] focus on curren buffer when toggle nvim-tree
 - [] code format (ts)
+- [] code format not regrade to tab stops
 - [] code indent not in position(ts)
 - [x] keymap ft (find terminal) not work
 - [x] keymap uw (toggle word wrap)
 - [] search highlight (/)
 - [x] jk not map to esc
+- [] project scope diagnostics
