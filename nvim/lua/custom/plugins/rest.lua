@@ -1,7 +1,8 @@
 return {
   {
     "rest-nvim/rest.nvim",
-    lazy = false,
+    lazy = true,
+    ft = "http",
     keys = {
       {
         "<leader>rr",
@@ -45,19 +46,5 @@ return {
         jump_to_request = false,
       })
     end,
-  },
-
-  -- We are using a Tree-Sitter parser for our HTTP files, in order to get the
-  -- correct syntax highlighting for HTTP files (including JSON bodies) you
-  -- should add the following into your ensure_installed table in your
-  -- tree-sitter setup.
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "json",
-        "http",
-      },
-    },
   },
 }

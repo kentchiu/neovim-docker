@@ -95,6 +95,7 @@ require('lazy').setup({
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git" },
+        ["<leader>r"] = { name = "+rest-client" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>u"] = { name = "+ui" },
@@ -213,51 +214,47 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-vim.o.autowrite = true -- Enable auto write
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
-vim.wo.number = true
-vim.o.relativenumber = true
-vim.o.scrolloff = 4
-vim.o.sidescrolloff = 8
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- No wrap
-vim.o.wrap = false
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.opt.autowrite = true -- Enable auto write
+vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.conceallevel = 0 -- Hide nothing
+vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
+vim.opt.cursorline = true -- Enable highlighting of the current line
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.ignorecase = true -- Ignore case
+vim.opt.inccommand = "nosplit" -- preview incremental substitute
+vim.opt.laststatus = 0
+vim.opt.list = true -- Show some invisible characters (tabs...
+vim.opt.mouse = "a" -- Enable mouse mode
+vim.opt.number = true -- Print line number
+vim.opt.pumblend = 10 -- Popup blend
+vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.scrolloff = 4 -- Lines of context
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.shiftround = true -- Round indent
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.shortmess:append { W = true, I = true, c = true }
+vim.opt.showmode = false -- Dont show mode since we have a statusline
+vim.opt.sidescrolloff = 8 -- Columns of context
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.spelllang = { "en" }
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.tabstop = 2 -- Number of spaces tabs count for
+vim.opt.termguicolors = true -- True color support
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.winminwidth = 5 -- Minimum window width
+vim.opt.wrap = false -- Disable line wrap
 
 -- [[ Basic Keymaps ]]
 
@@ -317,7 +314,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline' },
+  ensure_installed = { 'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline', 'http', 'json', 'sql' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
