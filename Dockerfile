@@ -78,6 +78,7 @@ RUN sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10
 RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
 
 RUN echo "alias vi='nvim'" >> ~/.zshrc
+RUN echo "PATH=/root/.local/bin:$PATH" >> ~/.zshrc
 
 # change default shell to zsh
 RUN chsh -s $(which zsh)

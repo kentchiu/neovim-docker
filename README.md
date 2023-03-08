@@ -35,6 +35,6 @@ docker volume rm -f pde
 - [] code format (ts)
 - [] code indent not in position(ts)
 - [x] keymap ft (find terminal) not work
-- [] keymap uw (toggle word wrap)
+- [x] keymap uw (toggle word wrap)
 - [] search highlight (/)
-- [] jk not map to esc
+- [x] jk not map to esc
