@@ -138,12 +138,12 @@ vim.keymap.set('n', '<leader>cc', '<c-v>', { desc = 'Column Mode' })
 --
 
 -- windows
--- vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
--- vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
--- vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
--- vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
--- vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
--- vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
 -- tabs
 -- vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -220,7 +220,7 @@ local keymap = vim.keymap.set
 -- If there is no definition, it will instead be hidden
 -- When you use an action in finder like "open vsplit",
 -- you can use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
 
 -- Code action
 keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")

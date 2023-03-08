@@ -50,7 +50,7 @@ require('lazy').setup({
   -- 'tpope/vim-rhubarb',
   --
   -- Detect tabstop and shiftwidth automatically
-  -- 'tpope/vim-sleuth',
+  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -213,6 +213,7 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+vim.o.autowrite = true -- Enable auto write
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -243,6 +244,9 @@ vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+
+-- No wrap
+vim.o.wrap = false
 
 -- Decrease update time
 vim.o.updatetime = 250
