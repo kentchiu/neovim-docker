@@ -41,7 +41,7 @@ require('lazy').setup({
     end,
     lazy= false,
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "File Exploror" },
+      { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "File Exploror" },
 		},
   },
 
