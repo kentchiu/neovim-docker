@@ -22,6 +22,8 @@ vim.keymap.set('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease window 
 vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width' })
 vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width' })
 
+
+
 -- Move Lines
 -- vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 -- vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
@@ -38,6 +40,8 @@ vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increa
 --   vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 --   vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 -- else
+--
+
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev buffer' })
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next buffer' })
 vim.keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev buffer' })
@@ -153,6 +157,13 @@ vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 -- vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 -- vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- terminal
+vim.keymap.set('t', '<Esc>','<C-\\><C-n>', { desc="Terminal Normal Mode"})
+vim.keymap.set('t', '<C-h>','<C-\\><C-n><C-w>h', { desc="Go to left window"})
+vim.keymap.set('t', '<C-j>','<C-\\><C-n><C-w>j', { desc="Go to lower window"})
+vim.keymap.set('t', '<C-k>','<C-\\><C-n><C-w>k', { desc="Go to upper window"})
+vim.keymap.set('t', '<C-l>','<C-\\><C-n><C-w>l', { desc="Go to right window"})
+vim.keymap.set({"n", "t"}, "<leader>fT", "<cmd>split term://zsh<CR>")
 --
 -- lazygit
 --
@@ -300,4 +311,5 @@ keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
 keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
 -- Floating terminal
-keymap({"n", "t"}, "ft", "<cmd>Lspsaga term_toggle<CR>")
+keymap({"n", "t"}, "<leader>ft", "<cmd>Lspsaga term_toggle<CR>")
+
