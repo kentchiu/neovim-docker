@@ -32,7 +32,6 @@ vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
-
 -- buffers
 -- if Util.has("bufferline.nvim") then
 --   vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
@@ -55,7 +54,8 @@ vim.keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and 
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
-vim.keymap.set('n', '<leader>ur', '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>', { desc = 'Redraw / clear hlsearch / diff update' })
+vim.keymap.set('n', '<leader>ur', '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>',
+{ desc = 'Redraw / clear hlsearch / diff update' })
 
 vim.keymap.set({ 'n', 'x' }, 'gw', '*N', { desc = 'Search word under cursor' })
 
@@ -156,14 +156,17 @@ vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" 
 vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
+vim.keymap.set("n", "<A-l>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<A-h>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+vim.keymap.set("n", "<A-j>", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+vim.keymap.set("n", "<A-k>", "<cmd>tablast<cr>", { desc = "Last Tab" })
 -- terminal
-vim.keymap.set('t', '<Esc>','<C-\\><C-n>', { desc="Terminal Normal Mode"})
-vim.keymap.set('t', '<C-h>','<C-\\><C-n><C-w>h', { desc="Go to left window"})
-vim.keymap.set('t', '<C-j>','<C-\\><C-n><C-w>j', { desc="Go to lower window"})
-vim.keymap.set('t', '<C-k>','<C-\\><C-n><C-w>k', { desc="Go to upper window"})
-vim.keymap.set('t', '<C-l>','<C-\\><C-n><C-w>l', { desc="Go to right window"})
-vim.keymap.set({"n", "t"}, "<leader>fT", "<cmd>split term://zsh<CR>")
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = "Terminal Normal Mode" })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = "Go to left window" })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = "Go to lower window" })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = "Go to upper window" })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = "Go to right window" })
+vim.keymap.set({ "n", "t" }, "<leader>fT", "<cmd>split term://zsh<CR>")
 --
 -- lazygit
 --
@@ -190,7 +193,8 @@ function lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua lazygit_toggle()<CR>', { noremap = true, silent = true, desc = 'lazygit' })
+vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua lazygit_toggle()<CR>',
+{ noremap = true, silent = true, desc = 'lazygit' })
 
 --
 -- terminal
@@ -224,7 +228,6 @@ vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua lazygit_toggle()<CR>', { no
 --[[
 --Lspsaga Keymap
 --]]
-
 local keymap = vim.keymap.set
 
 -- LSP finder - Find the symbol's definition
@@ -234,7 +237,7 @@ local keymap = vim.keymap.set
 keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
 
 -- Code action
-keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
 -- Rename all occurrences of the hovered word for the entire file
 keymap("n", "<leader>crr", "<cmd>Lspsaga rename<CR>")
@@ -250,7 +253,7 @@ keymap("n", "<leader>crr", "<cmd>Lspsaga rename ++project<CR>")
 keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
 
 -- Go to definition
-keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 
 -- Peek type definition
 -- You can edit the file containing the type definition in the floating window
@@ -260,7 +263,7 @@ keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
 keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
 
 -- Go to type definition
-keymap("n","gt", "<cmd>Lspsaga goto_type_definition<CR>")
+keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
 
 
 -- Show line diagnostics
@@ -289,8 +292,7 @@ keymap("n", "]E", function()
 end)
 
 -- Toggle outline
-keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
-
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
 -- Hover Doc
 -- If there is no hover doc,
 -- there will be a notification stating that
@@ -311,5 +313,4 @@ keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
 keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
 -- Floating terminal
-keymap({"n", "t"}, "<leader>ft", "<cmd>Lspsaga term_toggle<CR>")
-
+keymap({ "n", "t" }, "<leader>ft", "<cmd>Lspsaga term_toggle<CR>")
