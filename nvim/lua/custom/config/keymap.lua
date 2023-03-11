@@ -116,24 +116,6 @@ vim.keymap.set('n', '<leader>uw', '<cmd>set wrap!<cr>', { desc = 'Toggle Word Wr
 -- c-v conflict with windows paste shortcut
 vim.keymap.set('n', '<leader>cc', '<c-v>', { desc = 'Column Mode' })
 
--- telescope
--- See `:help telescope.builtin`
--- vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
--- vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
--- vim.keymap.set('n', '<leader>s/', function()
---   -- You can pass additional configuration to telescope to change theme, layout, etc.
---   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
---     winblend = 10,
---     previewer = false,
---   })
--- end, { desc = 'Fuzzily search in current buffer' })
---
--- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search files' })
--- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search help' })
--- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
--- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = 'Search by grep' })
--- vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
-
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -200,30 +182,30 @@ vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua lazygit_toggle()<CR>',
 -- terminal
 --
 
--- local terminal = Terminal:new {
---   cmd = 'zsh',
---   direction = 'float',
---   float_opts = {
---     --    border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
---     border = 'curved',
---   },
---   -- function to run on opening the terminal
---   on_open = function(term)
---     vim.cmd 'startinsert!'
---     vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
---   end,
---   -- function to run on closing the terminal
---   on_close = function(term)
---     vim.cmd 'startinsert!'
---   end,
--- }
+local terminal = Terminal:new {
+  cmd = 'zsh',
+  direction = 'float',
+  float_opts = {
+    --    border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+    border = 'curved',
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd 'startinsert!'
+    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd 'startinsert!'
+  end,
+}
 
--- function terminal_toggle()
---   terminal:toggle()
--- end
---
--- vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua terminal_toggle()<CR>', { noremap = true, silent = true, desc = 'Terminal' })
---
+function terminal_toggle()
+  terminal:toggle()
+end
+
+vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua terminal_toggle()<CR>', { noremap = true, silent = true, desc = 'Terminal' })
+
 
 --[[
 --Lspsaga Keymap
