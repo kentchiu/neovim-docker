@@ -37,10 +37,10 @@ require('lazy').setup({
   --
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
-  { -- LSP Configuration & Plugins
+  {
+    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -55,43 +55,43 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
-  { -- Autocompletion
+  {
+    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
-
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    opts = { 
-      plugins = { spelling = true},
+    opts = {
+      plugins = { spelling = true },
     },
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
       local keymaps = {
         mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["gz"] = { name = "+surround" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
+            ["g"] = { name = "+goto" },
+            ["gz"] = { name = "+surround" },
+            ["]"] = { name = "+next" },
+            ["["] = { name = "+prev" },
         -- ["<leader><tab>"] = { name = "+tab" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>f"] = { name = "+file/find" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>r"] = { name = "+rest-client" },
-        ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>u"] = { name = "+ui" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
+            ["<leader>b"] = { name = "+buffer" },
+            ["<leader>c"] = { name = "+code" },
+            ["<leader>f"] = { name = "+file/find" },
+            ["<leader>g"] = { name = "+git" },
+            ["<leader>r"] = { name = "+rest-client" },
+            ["<leader>q"] = { name = "+quit/session" },
+            ["<leader>s"] = { name = "+search" },
+            ["<leader>u"] = { name = "+ui" },
+            ["<leader>w"] = { name = "+windows" },
+            ["<leader>x"] = { name = "+diagnostics/quickfix" },
       }
       wk.register(keymaps)
     end,
   },
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  {
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -105,7 +105,8 @@ require('lazy').setup({
     },
   },
   --
-  { -- Theme inspired by Atom
+  {
+    -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
@@ -113,14 +114,15 @@ require('lazy').setup({
     end,
   },
   --
-  -- 
+  --
   -- {
   --   'folke/tokyonight.nvim',
   --   config = function()
   --     vim.cmd.colorscheme 'tokyonight'
   --   end,
   -- },
-  { -- Set lualine as statusline
+  {
+    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -132,8 +134,8 @@ require('lazy').setup({
       },
     },
   },
-
-  { -- Add indentation guides even on blank lines
+  {
+    -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -142,13 +144,10 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
-
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
+  { 'numToStr/Comment.nvim',         opts = {} },
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
-
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
@@ -161,8 +160,8 @@ require('lazy').setup({
       return vim.fn.executable 'make' == 1
     end,
   },
-
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -171,7 +170,6 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
-
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -210,8 +208,8 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+            ['<C-u>'] = false,
+            ['<C-d>'] = false,
       },
     },
   },
@@ -241,8 +239,18 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 
-    'lua', 'python',  'tsx', 'typescript', 'help', 'vim', 'markdown', 'markdown_inline', 'http', 'json', 'sql',
+  ensure_installed = {
+    'lua',
+    'python',
+    'tsx',
+    'typescript',
+    'help',
+    'vim',
+    'markdown',
+    'markdown_inline',
+    'http',
+    'json',
+    'sql',
     'bash',
     'css',
     'diff',
@@ -280,41 +288,41 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
       },
     },
     swap = {
       enable = true,
       swap_next = {
-        ['<leader>a'] = '@parameter.inner',
+            ['<leader>a'] = '@parameter.inner',
       },
       swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
+            ['<leader>A'] = '@parameter.inner',
       },
     },
   },
@@ -350,12 +358,12 @@ local on_attach = function(_, bufnr)
   nmap('gr', function()
     require('telescope.builtin').lsp_references()
   end
-    , 'Goto References')
+  , 'Goto References')
   nmap('gi', vim.lsp.buf.implementation, 'Goto Implementation')
   nmap('gt', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
   nmap('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
-  nmap('<leader>xx', require('telescope.builtin').diagnostics , 'Workspace Symbols')
+  nmap('<leader>sx', require('telescope.builtin').diagnostics, 'Diagnostics(Telescope)')
 
 
   -- See `:help K` for why this keymap
@@ -392,8 +400,8 @@ local servers = {
   tsserver = {},
   tailwindcss = {},
   html = {},
-  angularls={},
-  cssls={},
+  angularls = {},
+  cssls = {},
   -- denols={},
   -- eslint={},
   -- emmet_ls={},
@@ -461,14 +469,14 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -477,7 +485,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
