@@ -182,30 +182,30 @@ vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua lazygit_toggle()<CR>',
 -- terminal
 --
 
--- local terminal = Terminal:new {
---   cmd = 'zsh',
---   direction = 'float',
---   float_opts = {
---     --    border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
---     border = 'curved',
---   },
---   -- function to run on opening the terminal
---   on_open = function(term)
---     vim.cmd 'startinsert!'
---     vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
---   end,
---   -- function to run on closing the terminal
---   on_close = function(term)
---     vim.cmd 'startinsert!'
---   end,
--- }
+local terminal = Terminal:new {
+  cmd = 'zsh',
+  direction = 'float',
+  float_opts = {
+    --    border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+    border = 'curved',
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd 'startinsert!'
+    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd 'startinsert!'
+  end,
+}
 
--- function terminal_toggle()
---   terminal:toggle()
--- end
---
--- vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua terminal_toggle()<CR>', { noremap = true, silent = true, desc = 'Terminal' })
---
+function terminal_toggle()
+  terminal:toggle()
+end
+
+vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua terminal_toggle()<CR>', { noremap = true, silent = true, desc = 'Terminal' })
+
 
 --[[
 --Lspsaga Keymap
