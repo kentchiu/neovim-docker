@@ -1,5 +1,3 @@
-
-
 return {
   -- fuzzy finder
   {

@@ -3,8 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 --
-print('lua/custom./plugins/init.lua is sourced')
-
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 
 return {
@@ -36,4 +34,50 @@ return {
     end,
   },
 
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = function()
+      local nvim_tree = require "nvim-tree"
+
+      nvim_tree.setup()
+    end,
+    lazy= false,
+    keys = {
+      { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "File Exploror" },
+		},
+  },
+
+  -- Useful plugin to show you pending keybinds.
+  {
+    'folke/which-key.nvim',
+    opts = { 
+      plugins = { spelling = true},
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      local keymaps = {
+        mode = { "n", "v" },
+        ["g"] = { name = "+goto" },
+        ["gz"] = { name = "+surround" },
+        ["]"] = { name = "+next" },
+        ["["] = { name = "+prev" },
+        -- ["<leader><tab>"] = { name = "+tab" },
+        ["<leader>b"] = { name = "+buffer" },
+        ["<leader>c"] = { name = "+code" },
+        ["<leader>f"] = { name = "+file/find" },
+        ["<leader>g"] = { name = "+git" },
+        ["<leader>r"] = { name = "+rest-client" },
+        ["<leader>q"] = { name = "+quit/session" },
+        ["<leader>s"] = { name = "+search" },
+        ["<leader>u"] = { name = "+ui" },
+        ["<leader>w"] = { name = "+windows" },
+        ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      }
+      wk.register(keymaps)
+    end,
+  },
 }

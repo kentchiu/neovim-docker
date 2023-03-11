@@ -29,21 +29,7 @@ require('lazy').setup({
   -- install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   -- NOTE: First, some plugins that don't require any configuration
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
-    config = function()
-      local nvim_tree = require "nvim-tree"
 
-      nvim_tree.setup()
-    end,
-    lazy= false,
-    keys = {
-      { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "File Exploror" },
-		},
-  },
 
   -- Git related plugins
   -- 'tpope/vim-fugitive',
@@ -206,15 +192,6 @@ require('lazy').setup({
 -- load config
 require("custom.config")
 
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -244,21 +221,21 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
-vim.keymap.set('n', '<leader>s/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = 'Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search files' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search help' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = 'Search by grep' })
--- vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
+-- vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
+-- vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
+-- vim.keymap.set('n', '<leader>s/', function()
+--   -- You can pass additional configuration to telescope to change theme, layout, etc.
+--   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+--     winblend = 10,
+--     previewer = false,
+--   })
+-- end, { desc = 'Fuzzily search in current buffer' })
+--
+-- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search files' })
+-- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search help' })
+-- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
+-- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = 'Search by grep' })
+-- -- vim.keymap.set('n', '<leader>xx', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -297,50 +274,50 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<M-space>',
     },
   },
-  -- textobjects = {
-  --   select = {
-  --     enable = true,
-  --     lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-  --     keymaps = {
-  --       -- You can use the capture groups defined in textobjects.scm
-  --       ['aa'] = '@parameter.outer',
-  --       ['ia'] = '@parameter.inner',
-  --       ['af'] = '@function.outer',
-  --       ['if'] = '@function.inner',
-  --       ['ac'] = '@class.outer',
-  --       ['ic'] = '@class.inner',
-  --     },
-  --   },
-  --   move = {
-  --     enable = true,
-  --     set_jumps = true, -- whether to set jumps in the jumplist
-  --     goto_next_start = {
-  --       [']m'] = '@function.outer',
-  --       [']]'] = '@class.outer',
-  --     },
-  --     goto_next_end = {
-  --       [']M'] = '@function.outer',
-  --       [']['] = '@class.outer',
-  --     },
-  --     goto_previous_start = {
-  --       ['[m'] = '@function.outer',
-  --       ['[['] = '@class.outer',
-  --     },
-  --     goto_previous_end = {
-  --       ['[M'] = '@function.outer',
-  --       ['[]'] = '@class.outer',
-  --     },
-  --   },
-  --   swap = {
-  --     enable = true,
-  --     swap_next = {
-  --       ['<leader>a'] = '@parameter.inner',
-  --     },
-  --     swap_previous = {
-  --       ['<leader>A'] = '@parameter.inner',
-  --     },
-  --   },
-  -- },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ['<leader>a'] = '@parameter.inner',
+      },
+      swap_previous = {
+        ['<leader>A'] = '@parameter.inner',
+      },
+    },
+  },
 }
 
 -- Diagnostic keymaps
@@ -378,7 +355,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('P', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<c-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')

@@ -1,6 +1,3 @@
-print('lua/custom/config/options.lua is sourced')
-
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
 vim.opt.autowrite = true -- Enable auto write
