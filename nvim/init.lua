@@ -347,11 +347,16 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
 
   nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
-  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  nmap('gr', function()
+    require('telescope.builtin').lsp_references()
+  end
+    , 'Goto References')
   nmap('gi', vim.lsp.buf.implementation, 'Goto Implementation')
   nmap('gt', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
   nmap('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+  nmap('<leader>xx', require('telescope.builtin').diagnostics , 'Workspace Symbols')
+
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')

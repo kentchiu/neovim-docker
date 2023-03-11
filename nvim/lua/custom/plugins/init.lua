@@ -7,7 +7,7 @@ vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 
 return {
 
-  { "chaoren/vim-wordmotion" },
+  -- { "chaoren/vim-wordmotion" },
   -- add symbols-outline
   {
     "simrat39/symbols-outline.nvim",
