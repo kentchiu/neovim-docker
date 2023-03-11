@@ -2,6 +2,11 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+--
+print('lua/custom./plugins/init.lua is sourced')
+
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
+
 return {
 
   { "chaoren/vim-wordmotion" },

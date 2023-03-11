@@ -1,3 +1,5 @@
+print('lua/custom/config/keymap.lua is sourced')
+
 -- [[ Basic Keymaps ]]
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 

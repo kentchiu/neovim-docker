@@ -203,6 +203,8 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- load config
+require("custom.config")
 -- [[ Setting options ]]
 -- See `:help vim.o`
 vim.opt.autowrite = true -- Enable auto write
