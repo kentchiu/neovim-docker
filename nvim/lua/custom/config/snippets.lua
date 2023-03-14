@@ -2,10 +2,6 @@
 --- Snippet File
 -----------------------
 
-print("Snippet is sourced")
-
-
-
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
