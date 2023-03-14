@@ -11,7 +11,7 @@ return {
       { "<leader><space>", require('telescope.builtin').find_files,            desc = "Find Files (root dir)" },
       -- find
       { "<leader>fb",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-      { "<leader><space>", require('telescope.builtin').find_files,            desc = "Find Files (root dir)" },
+      { "<leader>ff", require('telescope.builtin').find_files,                 desc = "Find Files (root dir)" },
       -- { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
       -- git
