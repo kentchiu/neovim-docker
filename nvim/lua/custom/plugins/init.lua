@@ -4,9 +4,6 @@
 -- See the kickstart.nvim README for more information
 --
 return {
-
-  -- { "chaoren/vim-wordmotion" },
-  -- add symbols-outline
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
@@ -47,7 +44,7 @@ return {
             ["gz"] = { name = "+surround" },
             ["]"] = { name = "+next" },
             ["["] = { name = "+prev" },
-        -- ["<leader><tab>"] = { name = "+tab" },
+            ["<leader><tab>"] = { name = "+tab" },
             ["<leader>b"] = { name = "+buffer" },
             ["<leader>c"] = { name = "+code" },
             ["<leader>f"] = { name = "+file/find" },
@@ -194,5 +191,8 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
+  },
+  {
+    "Pocco81/auto-save.nvim"
   }
 }
