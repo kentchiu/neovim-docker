@@ -19,17 +19,17 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons'
     },
-    config = function()
-      local nvim_tree = require "nvim-tree"
-
-      nvim_tree.setup({
-
-      })
-    end,
     lazy = false,
     keys = {
       { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "File Exploror" },
     },
+    opts = {
+      actions = {
+        open_file = {
+          quit_on_open = true,
+        },
+      },
+    }
   },
 
   -- Useful plugin to show you pending keybinds.
