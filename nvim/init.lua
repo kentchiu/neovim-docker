@@ -26,7 +26,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -74,36 +73,36 @@ require('lazy').setup({
       },
     },
   },
-  --
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-  --
-  --
+  -- {
+  --   'navarasu/onedark.nvim',
+  --   -- priority = 1000,
+  --   -- config = function()
+  --   --   vim.cmd.colorscheme 'onedark'
+  --   -- end,
+  -- },
   -- {
   --   'folke/tokyonight.nvim',
+  --   priority = 1000,
+  -- },
+  -- { 
+  --   "Mofiqul/dracula.nvim",
   --   config = function()
-  --     vim.cmd.colorscheme 'tokyonight'
+  --     vim.cmd.colorscheme 'dracula'
   --   end,
   -- },
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
+  -- {
+  --   -- Set lualine as statusline
+  --   'nvim-lualine/lualine.nvim',
+  --   -- See `:help lualine.txt`
+  --   opts = {
+  --     options = {
+  --       icons_enabled = true,
+  --       theme = 'auto',
+  --       component_separators = '|',
+  --       section_separators = '',
+  --     },
+  --   },
+  -- },
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',

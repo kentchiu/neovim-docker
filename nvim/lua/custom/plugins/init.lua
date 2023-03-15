@@ -186,10 +186,27 @@ return {
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
-  {
-    "Pocco81/auto-save.nvim"
+  { "Pocco81/auto-save.nvim"
   },
+  { "nvim-telescope/telescope-symbols.nvim" },
+  -- { -- move to themes
+  --   'navarasu/onedark.nvim',
+  --   -- priority = 1000,
+  --   -- config = function()
+  --   --   vim.cmd.colorscheme 'onedark'
+  --   -- end,
+  -- },
   {
-    "nvim-telescope/telescope-symbols.nvim",
-  }
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = '|',
+        section_separators = '',
+      },
+    },
+  },
 }
