@@ -187,12 +187,9 @@ return {
     },
   },
   {
-    "rafamadriz/friendly-snippets",
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
+    "Pocco81/auto-save.nvim"
   },
   {
-    "Pocco81/auto-save.nvim"
+    "nvim-telescope/telescope-symbols.nvim",
   }
 }

@@ -60,36 +60,6 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
-  -- Useful plugin to show you pending keybinds.
-  {
-    'folke/which-key.nvim',
-    opts = {
-      plugins = { spelling = true },
-    },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      local keymaps = {
-        mode = { "n", "v" },
-            ["g"] = { name = "+goto" },
-            ["gz"] = { name = "+surround" },
-            ["]"] = { name = "+next" },
-            ["["] = { name = "+prev" },
-        -- ["<leader><tab>"] = { name = "+tab" },
-            ["<leader>b"] = { name = "+buffer" },
-            ["<leader>c"] = { name = "+code" },
-            ["<leader>f"] = { name = "+file/find" },
-            ["<leader>g"] = { name = "+git" },
-            ["<leader>r"] = { name = "+rest-client" },
-            ["<leader>q"] = { name = "+quit/session" },
-            ["<leader>s"] = { name = "+search" },
-            ["<leader>u"] = { name = "+ui" },
-            ["<leader>w"] = { name = "+windows" },
-            ["<leader>x"] = { name = "+diagnostics/quickfix" },
-      }
-      wk.register(keymaps)
-    end,
-  },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -127,10 +97,10 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'auto',
-        -- component_separators = '|',
-        -- section_separators = '',
+        component_separators = '|',
+        section_separators = '',
       },
     },
   },
@@ -355,14 +325,38 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
 
   nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+
   nmap('gr', function()
-    require('telescope.builtin').lsp_references()
-  end
-  , 'Goto References')
+      require('telescope.builtin').lsp_references()
+    end,
+    'Goto References')
+  
+  nmap('gR', function()
+      require('telescope.builtin').lsp_references({jump_type='vsplit'})
+      -- require('telescope.builtin').lsp_definitions({jump_type='vsplit'})
+    end,
+    'Goto References(vsplit)')
+
   nmap('gi', vim.lsp.buf.implementation, 'Goto Implementation')
   nmap('gt', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
-  nmap('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+  nmap('<leader>cS', function() 
+      require('telescope.builtin').lsp_dynamic_workspace_symbols({
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          }
+      })
+    end,
+    'Workspace Symbols')
   nmap('<leader>sx', require('telescope.builtin').diagnostics, 'Diagnostics(Telescope)')
 
 
@@ -378,6 +372,8 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  nmap('<leader>ci', require('telescope.builtin').lsp_incoming_calls, 'lsp_incoming_calls')
+  nmap('<leader>co', require('telescope.builtin').lsp_outgoing_calls, 'lsp_outgoing_calls')
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()

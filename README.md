@@ -30,11 +30,18 @@ docker volume rm -f pde
 
 ## TODO
 
+
+- [] spell check correct in quick fix or code aciton
+- [] spell check auto enable by file type
+- [] spell check toggle 
+- [] dracula theme
+- [] Tokyo night theme 
+- [] File changes history (Lazy Git or Telescope)
 - [] Insert mode by default in terminal
 - [] slient exit terminal
-- [] auto-save
 - [] telescope filter by file type
-- [] telescope grep_string
+- [x] auto-save
+- [x] telescope grep_string
 - [x] command history
 - [x] focus on curren buffer when toggle nvim-tree
 - [x] code format (ts)
