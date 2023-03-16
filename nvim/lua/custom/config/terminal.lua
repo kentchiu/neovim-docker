@@ -5,6 +5,7 @@
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new {
   cmd = 'lazygit',
+  count = 7,
   dir = 'git_dir',
   direction = 'float',
   float_opts = {
@@ -32,6 +33,7 @@ end
 
 local terminal = Terminal:new {
   cmd = 'zsh',
+  count = 8,
   direction = 'float',
   float_opts = {
     --    border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
@@ -63,7 +65,12 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = "Go to right window" 
 
 vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>lua terminal_toggle()<CR>', { noremap = true, silent = true, desc = 'Float Terminal' })
 vim.api.nvim_set_keymap('n', '<leader>tT', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true, desc = 'Docker Terminal' })
+
 vim.api.nvim_set_keymap('n', '<leader>tr', '<cmd>ToggleTermSendCurrentLine<CR>', { noremap = true, silent = true, desc = 'Run Current Line' })
+vim.api.nvim_set_keymap('v', '<leader>tr', '<cmd>ToggleTermSendCurrentLine<CR>', { noremap = true, silent = true, desc = 'Run Current Line' })
+vim.api.nvim_set_keymap('i', '<leader>tr', '<cmd>ToggleTermSendCurrentLine<CR>', { noremap = true, silent = true, desc = 'Run Current Line' })
+
+vim.api.nvim_set_keymap('n', '<c-r>', '<cmd>ToggleTermSendVisualSelection<CR>', { noremap = true, silent = true, desc = 'Run Selection' })
 vim.api.nvim_set_keymap('v', '<c-r>', '<cmd>ToggleTermSendVisualSelection<CR>', { noremap = true, silent = true, desc = 'Run Selection' })
 
 -- lazy git
