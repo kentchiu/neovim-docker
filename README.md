@@ -35,10 +35,10 @@ docker volume rm -f pde
 - [] spell check auto enable by file type
 - [] spell check toggle 
 - [x] dracula theme
-- [] Tokyo night theme 
-- [] File changes history (Lazy Git or Telescope)
-- [] Insert mode by default in terminal
-- [] slient exit terminal
+- [x] Tokyo night theme 
+- [x] File changes history (Lazy Git or Telescope)
+- [x] Insert mode by default in terminal
+- [x] slient exit terminal
 - [] telescope filter by file type
 - [x] auto-save
 - [x] telescope grep_string
