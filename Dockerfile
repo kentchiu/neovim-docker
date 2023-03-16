@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # install command
 RUN apt-get install build-essential zsh tmux wget curl tree bat git \
-  ripgrep fd-find fzf python3-pip unzip tar zip unzip gzip locales -y 
+  ripgrep fd-find fzf python3-pip unzip tar zip unzip gzip locales jq -y 
 
 RUN locale-gen en_US.UTF-8
 
@@ -19,8 +19,6 @@ RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&  \
   apt-get install -y nodejs
 
 RUN npm install -g tree-sitter-cli neovim
-
-
 
 # python
 
@@ -49,15 +47,6 @@ RUN cd /tmp && LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduff
 RUN  cd /tmp && wget https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb \
   && apt install ./git-delta_0.15.1_amd64.deb
 
-# RUN cd /tmp && mkdir fonts && cd fonts && \ 
-#   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip && \ 
-#   unzip JetBrainsMono.zip
-
-# fix utf-8 and color issue
-#RUN echo "alias tmux='tmux -u2'" >> ~/.bashrc
-#RUN echo "alias vi='nvim'" >> ~/.bashrc
-#RUN echo "export PATH=/root/.local/bin:$PATH" >> ~/.bashrc
-
 
 # Custom cache invalidation
 # ARG CACHEBUST=1
@@ -73,7 +62,6 @@ RUN ln -sf /root/.config/neovim_docker/nvim /root/.config/nvim \
   && ln -sf /root/.config/dotfile/.gitconfig /root/.gitconfig \
   && ln -sf /root/.config/dotfile/.tmux.conf /root/.tmux.conf \
   && ln -sf /root/.config/dotfile/.vimrc /root/.vimrc
-# && ln -sf /root/.config/dotfile/.zshrc /root/.zshrc 
 
 # set up oh-my-zsh
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
