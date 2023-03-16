@@ -34,8 +34,8 @@ docker volume rm -f pde
 - [] spell check correct in quick fix or code aciton
 - [] spell check auto enable by file type
 - [] spell check toggle 
-- [] dracula theme
-- [] Tokyo night theme 
+- [x] dracula theme
+- [x] Tokyo night theme 
 - [] File changes history (Lazy Git or Telescope)
 - [] Insert mode by default in terminal
 - [] slient exit terminal
