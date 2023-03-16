@@ -10,7 +10,13 @@ return {
     keys = { { "<leader>us", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
   },
-  { 'akinsho/toggleterm.nvim', version = "*", opts = { --[[ things you want to change go here]] } },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      open_mapping = [[<c-\>]],
+    }
+  },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -53,8 +59,9 @@ return {
             ["<leader>q"] = { name = "+quit/session" },
             ["<leader>s"] = { name = "+search" },
             ["<leader>u"] = { name = "+ui" },
+            ["<leader>t"] = { name = "+terminal" },
             ["<leader>w"] = { name = "+windows" },
-            ["<leader>x"] = { name = "+diagnostics/quickfix" },
+            ["<leader>x"] = { name = "+problem" },
       }
       wk.register(keymaps)
     end,
