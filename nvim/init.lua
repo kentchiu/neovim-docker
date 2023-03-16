@@ -402,16 +402,16 @@ local servers = {
   -- gradle_ls={},
   -- graphql={},
   -- groovy={},
-  -- jsonls={},
+  jsonls={},
   -- jdtls={},
-  -- marksman={}, markdown
+  -- marksman={},
   -- jdtls={},
   -- powershell_es={},
-  -- sqlls={}, sql
+  sqlls={}, 
   -- svelte={},
   -- taplo={}, toml
   -- lemminx={}, xml
-  -- yamlls={}, yml
+  yamlls={}, 
   -- svelte={},
 
 

@@ -7,7 +7,7 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    keys = { { "<leader>us", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
   },
   { 'akinsho/toggleterm.nvim', version = "*", opts = { --[[ things you want to change go here]] } },
