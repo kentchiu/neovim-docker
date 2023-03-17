@@ -217,6 +217,10 @@ return {
     },
   },
   {
-    'nvim-treesitter/playground'
+    "nvim-treesitter/playground"
+  },
+  {
+    "gennaro-tedesco/nvim-jqx",
+    ft = { "json" },
   },
 }
