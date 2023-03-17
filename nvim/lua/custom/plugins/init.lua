@@ -219,8 +219,4 @@ return {
   {
     "nvim-treesitter/playground"
   },
-  {
-    "gennaro-tedesco/nvim-jqx",
-    ft = { "json" },
-  },
 }

@@ -97,6 +97,7 @@ vim.keymap.set('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Quickfix List' })
 -- end
 
 -- toggle options
+--
 -- map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
 -- map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
 -- map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
@@ -105,8 +106,8 @@ vim.keymap.set('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Quickfix List' })
 -- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 -- map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 --
-
-vim.keymap.set('n', "<leader>ut", "<cmd>TSPlaygroundToggle<CR>")
+vim.keymap.set("n", "<leader>ua", ":ASToggle<CR>", {desc = "Toggle Auto Save"})
+vim.keymap.set('n', "<leader>ut", "<cmd>TSPlaygroundToggle<CR>", {desc = "Toggle TS playground"})
 
 
 -- quit
