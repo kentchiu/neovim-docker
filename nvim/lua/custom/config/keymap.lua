@@ -5,9 +5,6 @@ vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- for testing plugins
-vim.keymap.set('n' ,'<leader>fp', '<cmd>source ~/.config/nvim/lua/custom/config/playground.lua<cr>')
-
 -- better up/down
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
