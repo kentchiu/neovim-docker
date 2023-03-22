@@ -103,7 +103,6 @@ vim.keymap.set('n', '<leader>xq', '<cmd>copen<cr>', { desc = 'Quickfix List' })
 -- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 -- map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 --
-vim.keymap.set("n", "<leader>ua", ":ASToggle<CR>", {desc = "Toggle Auto Save"})
 vim.keymap.set('n', "<leader>ut", "<cmd>TSPlaygroundToggle<CR>", {desc = "Toggle TS playground"})
 
 

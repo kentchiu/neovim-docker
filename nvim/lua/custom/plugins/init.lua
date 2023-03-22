@@ -17,24 +17,6 @@ return {
       open_mapping = [[<c-\>]],
     }
   },
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons'
-  --   },
-  --   lazy = false,
-  --   keys = {
-  --     { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "File Exploror" },
-  --   },
-  --   opts = {
-  --     actions = {
-  --       open_file = {
-  --         quit_on_open = true,
-  --       },
-  --     },
-  --   }
-  -- },
-
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
@@ -61,7 +43,7 @@ return {
         ["<leader>u"] = { name = "+ui" },
         ["<leader>t"] = { name = "+terminal" },
         ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+problem" },
+        ["<leader>x"] = { name = "+problems" },
       }
       wk.register(keymaps)
     end,

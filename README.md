@@ -30,11 +30,14 @@ docker volume rm -f pde
 
 ## TODO
 
-
+- [] TODO machanizie in trouble.nvim (check <leader x> and <leader>st in lazyvim)
+- [] ut -> toogle options like lazyvim
+- [] remove buffer use :bdelete command in telescope buffers view
+- [] Find recent file only under current folder
 - [] spell check correct in quick fix or code aciton
 - [] spell check auto enable by file type
 - [] spell check toggle 
-- [x] dracula theme
+ [x] dracula theme
 - [x] Tokyo night theme 
 - [x] File changes history (Lazy Git or Telescope)
 - [x] Insert mode by default in terminal

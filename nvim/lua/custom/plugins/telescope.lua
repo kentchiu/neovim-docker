@@ -24,9 +24,9 @@ return {
       -- },
       { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
       -- git
-      { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                   desc = "commits" },
+      { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                   desc = "Commits" },
       { "<leader>gC",      "<cmd>Telescope git_bcommits<CR>",                  desc = "Diff Current Buffer" },
-      { "<leader>gs",      "<cmd>Telescope git_status<CR>",                    desc = "status" },
+      { "<leader>gs",      "<cmd>Telescope git_status<CR>",                    desc = "Git Status" },
       { "<leader>gb",      "<cmd>Telescope git_branches<CR>",                  desc = "Branches" },
       -- search
       { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                  desc = "Auto Commands" },
