@@ -54,7 +54,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
-vim.keymap.set("n", "<leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+vim.keymap.set("n", "<leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><cr>",
 { desc = "Redraw / clear hlsearch / diff update" })
 
 vim.keymap.set({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
@@ -101,7 +101,7 @@ vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 -- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 -- map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 --
-vim.keymap.set("n", "<leader>ut", "<cmd>TSPlaygroundToggle<CR>", {desc = "Toggle TS playground"})
+vim.keymap.set("n", "<leader>ut", "<cmd>TSPlaygroundToggle<cr>", {desc = "Toggle TS playground"})
 vim.keymap.set("n", "<leader>us", "<cmd>set spell!<cr>", { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>uw", "<cmd>set wrap!<cr>", { desc = "Toggle Word Wrap" })
 

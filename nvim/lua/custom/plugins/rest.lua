@@ -13,7 +13,7 @@ return {
       },
       -- {
       --   "<leader>rt",
-      --   "<cmd>lua require("rest-nvim").run()<CR>",
+      --   "<cmd>lua require("rest-nvim").run()<cr>",
       --   desc = "RestNvimRun",
       -- },
       {
