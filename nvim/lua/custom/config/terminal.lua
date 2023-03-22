@@ -66,7 +66,7 @@ vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Go to right window" 
 
 
 vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua terminal_toggle()<CR>", { noremap = true, silent = true, desc = "Float Terminal" })
-vim.api.nvim_set_keymap("n", "<leader>tT", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true, desc = "Docker Terminal" })
+vim.api.nvim_set_keymap("n", "<leader>tT", "<cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true, desc = "Docker Terminal" })
 
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>ToggleTermSendCurrentLine<CR>", { noremap = true, silent = true, desc = "Run Current Line" })
 vim.api.nvim_set_keymap("v", "<leader>tr", "<cmd>ToggleTermSendCurrentLine<CR>", { noremap = true, silent = true, desc = "Run Current Line" })
