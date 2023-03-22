@@ -45,19 +45,11 @@ vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
 -- end
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
--- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-
--- Clear search, diff update and redraw
--- taken from runtime/lua/_editor.lua
-vim.keymap.set("n", "<leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><cr>",
-{ desc = "Redraw / clear hlsearch / diff update" })
-
-vim.keymap.set({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -101,20 +93,19 @@ vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 -- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 -- map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 --
-vim.keymap.set("n", "<leader>ut", "<cmd>TSPlaygroundToggle<cr>", {desc = "Toggle TS playground"})
+vim.keymap.set("n", "<leader>ut", "<cmd>TSPlaygroundToggle<cr>", { desc = "Toggle TS playground" })
 vim.keymap.set("n", "<leader>us", "<cmd>set spell!<cr>", { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>uw", "<cmd>set wrap!<cr>", { desc = "Toggle Word Wrap" })
+
+-- Clear search, diff update and redraw
+-- taken from runtime/lua/_editor.lua
+vim.keymap.set("n", "<leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><cr>",
+  { desc = "Redraw / clear hlsearch / diff update" })
 
 -- highlights under cursor
 if vim.fn.has "nvim-0.9.0" == 1 then
   vim.keymap.set("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
-
--- quit
-vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- c-v conflict with windows paste shortcut
-vim.keymap.set("n", "<leader>cc", "<c-v>", { desc = "Column Mode" })
 
 -- Diagnostic keymaps
 -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -143,4 +134,18 @@ vim.keymap.set("n", "<A-h>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 vim.keymap.set("n", "<A-j>", "<cmd>tabfirst<cr>", { desc = "First Tab" })
 vim.keymap.set("n", "<A-k>", "<cmd>tablast<cr>", { desc = "Last Tab" })
 
+-- misc
 
+-- c-v conflict with windows paste shortcut
+vim.keymap.set("n", "<leader>cc", "<c-v>", { desc = "Column Mode" })
+
+-- Clear search with <esc>
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- Search word under cursor
+vim.keymap.set({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+
+-- quit
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- create folder
+vim.keymap.set("n", "m", "zf%", { desc = "Create Fold", remap= true })
