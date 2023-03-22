@@ -9,16 +9,16 @@ return {
       -- Some of lsp relative mappings is defined in LSP on_attach function
       --
       { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/",       require('telescope.builtin').live_grep,             desc = "Find in Files (Grep)" },
+      { "<leader>/",       require("telescope.builtin").live_grep,             desc = "Find in Files (Grep)" },
       { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
-      { "<leader><space>", require('telescope.builtin').find_files,            desc = "Find Files" },
+      { "<leader><space>", require("telescope.builtin").find_files,            desc = "Find Files" },
       -- find
       { "<leader>fb",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-      { "<leader>ff",      require('telescope.builtin').find_files,            desc = "Find Files" },
+      { "<leader>ff",      require("telescope.builtin").find_files,            desc = "Find Files" },
       -- {
       --   "<leader>fF",
       --   function()
-      --     require('telescope.builtin').find_files({ cwd = false })
+      --     require("telescope.builtin").find_files({ cwd = false })
       --   end,
       --   desc = "Find Files (cwd)"
       -- },
@@ -34,7 +34,7 @@ return {
       { "<leader>sc",      "<cmd>Telescope command_history<cr>",               desc = "Command History" },
       { "<leader>sC",      "<cmd>Telescope commands<cr>",                      desc = "Commands" },
       { "<leader>sE",      "<cmd>Telescope symbols<cr>",                       desc = "Emoji" },
-      { "<leader>sg",      require('telescope.builtin').live_grep,             desc = "Find in Files (Grep)" },
+      { "<leader>sg",      require("telescope.builtin").live_grep,             desc = "Find in Files (Grep)" },
       { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                     desc = "Help Pages" },
       { "<leader>sH",      "<cmd>Telescope highlights<cr>",                    desc = "Search Highlight Groups" },
       { "<leader>sj",      "<cmd>Telescope jumplist<cr>",                      desc = "Jump List" },
@@ -47,12 +47,12 @@ return {
       { "<leader>sQ",      "<cmd>Telescope quickfixhistory<cr>",               desc = "Quickfix History" },
       { "<leader>sr",      "<cmd>Telescope resume<cr>",                        desc = "Resume" },
       { "<leader>st",      "<cmd>Telescope treesitter<cr>",                    desc = "Treesitter" },
-      { "<leader>sw",      require('telescope.builtin').grep_string,           desc = "Word" },
-      { "<leader>sx",      require('telescope.builtin').diagnostics,           desc = "Diagnostics" },
-      -- { "<leader>ss", require('telescope.builtin').lsp_document_symbols, desc = "Goto Symbol", },
+      { "<leader>sw",      require("telescope.builtin").grep_string,           desc = "Word" },
+      { "<leader>sx",      require("telescope.builtin").diagnostics,           desc = "Diagnostics" },
+      -- { "<leader>ss", require("telescope.builtin").lsp_document_symbols, desc = "Goto Symbol", },
       -- {
       --   "<leader>sS",
-      --   require('telescope.builtin').lsp_workspace_symbols,
+      --   require("telescope.builtin").lsp_workspace_symbols,
       --   {
       --     symbols = {
       --       "Class",
@@ -84,10 +84,10 @@ return {
             --   return require("trouble.providers.telescope").open_selected_with_trouble(...)
             -- end,
             ["<a-i>"] = function()
-              require('telescope.builtin').find_files({ no_ignore = true })
+              require("telescope.builtin").find_files({ no_ignore = true })
             end,
             ["<a-h>"] = function()
-              require('telescope.builtin').find_files({ hidden = true })
+              require("telescope.builtin").find_files({ hidden = true })
             end,
             ["<C-Down>"] = function(...)
               return require("telescope.actions").cycle_history_next(...)

@@ -11,7 +11,7 @@ return {
     config = true,
   },
   {
-    'akinsho/toggleterm.nvim',
+    "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
       open_mapping = [[<c-\>]],
@@ -19,7 +19,7 @@ return {
   },
   -- Useful plugin to show you pending keybinds.
   {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
     opts = {
       plugins = { spelling = true },
     },
@@ -82,30 +82,30 @@ return {
     },
   },
   {
-    'phaazon/hop.nvim',
+    "phaazon/hop.nvim",
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require 'hop'.setup {
+      require "hop".setup {
 
       }
-      vim.keymap.set('n', 's', '<cmd>HopWord<cr>', { desc = 'Hop to word' })
-      vim.keymap.set('n', 'S', '<cmd>HopChar2<cr>', { desc = 'Hop to Char2' })
+      vim.keymap.set("n", "s", "<cmd>HopWord<cr>", { desc = "Hop to word" })
+      vim.keymap.set("n", "S", "<cmd>HopChar2<cr>", { desc = "Hop to Char2" })
       -- place this in one of your configuration file(s)
-      local hop = require('hop')
-      local directions = require('hop.hint').HintDirection
-      vim.keymap.set('', 'f', function()
+      local hop = require("hop")
+      local directions = require("hop.hint").HintDirection
+      vim.keymap.set("", "f", function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
       end, { remap = true })
-      vim.keymap.set('', 'f', function()
+      vim.keymap.set("", "f", function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
       end, { remap = true })
-      vim.keymap.set('', 'F', function()
+      vim.keymap.set("", "F", function()
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
       end, { remap = true })
-      vim.keymap.set('', 't', function()
+      vim.keymap.set("", "t", function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
       end, { remap = true })
-      vim.keymap.set('', 'T', function()
+      vim.keymap.set("", "T", function()
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end, { remap = true })
     end
@@ -178,22 +178,22 @@ return {
   { "Pocco81/auto-save.nvim", enabled = false },
   { "nvim-telescope/telescope-symbols.nvim" },
   -- { -- move to themes
-  --   'navarasu/onedark.nvim',
+  --   "navarasu/onedark.nvim",
   --   -- priority = 1000,
   --   -- config = function()
-  --   --   vim.cmd.colorscheme 'onedark'
+  --   --   vim.cmd.colorscheme "onedark"
   --   -- end,
   -- },
   {
     -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
+        theme = "auto",
+        component_separators = "|",
+        section_separators = "",
       },
     },
   },

@@ -3,7 +3,7 @@
 -----------------------
 
 -- source playground
-vim.keymap.set('n', '<leader>pp', '<cmd>source ~/.config/nvim/lua/custom/config/playground.lua<cr>')
+vim.keymap.set("n", "<leader>pp", "<cmd>source ~/.config/nvim/lua/custom/config/playground.lua<cr>")
 
 -- print("Playground is sourced")
 
@@ -30,16 +30,16 @@ vim.keymap.set('n', '<leader>pp', '<cmd>source ~/.config/nvim/lua/custom/config/
 --   prompt = "~ dotfiles ~",
 --   border = true,
 --   dynamic_preview_title = true,
---   -- results_title = 'xxx',
+--   -- results_title = "xxx",
 --   preview = false,
 -- })
 --
 --
--- require('telescope.builtin').live_grep({
---    prompt_title = 'find string in open buffers...',
+-- require("telescope.builtin").live_grep({
+--    prompt_title = "find string in open buffers...",
 --    grep_open_files = true
 --  })
--- require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{
+-- require("telescope.builtin").find_files(require("telescope.themes").get_dropdown{
 --     previewer = false
 --   })
 

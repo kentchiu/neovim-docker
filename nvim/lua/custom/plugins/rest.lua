@@ -13,7 +13,7 @@ return {
       },
       -- {
       --   "<leader>rt",
-      --   "<cmd>lua require('rest-nvim').run()<CR>",
+      --   "<cmd>lua require("rest-nvim").run()<CR>",
       --   desc = "RestNvimRun",
       -- },
       {
@@ -62,7 +62,7 @@ return {
         },
         -- Jump to request line on run
         jump_to_request = false,
-        env_file = '.env',
+        env_file = ".env",
         custom_dynamic_variables = {},
         yank_dry_run = true,
       })
