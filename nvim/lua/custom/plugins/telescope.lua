@@ -9,7 +9,12 @@ return {
       -- Some of lsp relative mappings is defined in LSP on_attach function
       --
       { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/",       require("telescope.builtin").live_grep,             desc = "Find in Files (Grep)" },
+      {
+        "<leader>/",
+        require("telescope.builtin").live_grep,
+        desc =
+        "Find in Files (Grep)"
+      },
       { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
       { "<leader><space>", require("telescope.builtin").find_files,            desc = "Find Files" },
       -- find
@@ -25,30 +30,42 @@ return {
       { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
       -- git
       { "<leader>gc",      "<cmd>Telescope git_commits<cr>",                   desc = "Commits" },
-      { "<leader>gC",      "<cmd>Telescope git_bcommits<cr>",                  desc = "Diff Current Buffer" },
-      { "<leader>gs",      "<cmd>Telescope git_status<cr>",                    desc = "Git Status" },
-      { "<leader>gb",      "<cmd>Telescope git_branches<cr>",                  desc = "Branches" },
+      {
+        "<leader>gC",
+        "<cmd>Telescope git_bcommits<cr>",
+        desc =
+        "Diff Current Buffer"
+      },
+      { "<leader>gs", "<cmd>Telescope git_status<cr>",                desc = "Git Status" },
+      { "<leader>gb", "<cmd>Telescope git_branches<cr>",              desc = "Branches" },
       -- search
-      { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                  desc = "Auto Commands" },
-      { "<leader>sb",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Buffer" },
-      { "<leader>sc",      "<cmd>Telescope command_history<cr>",               desc = "Command History" },
-      { "<leader>sC",      "<cmd>Telescope commands<cr>",                      desc = "Commands" },
-      { "<leader>sE",      "<cmd>Telescope symbols<cr>",                       desc = "Emoji" },
-      { "<leader>sg",      require("telescope.builtin").live_grep,             desc = "Find in Files (Grep)" },
-      { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                     desc = "Help Pages" },
-      { "<leader>sH",      "<cmd>Telescope highlights<cr>",                    desc = "Search Highlight Groups" },
-      { "<leader>sj",      "<cmd>Telescope jumplist<cr>",                      desc = "Jump List" },
-      { "<leader>sk",      "<cmd>Telescope keymaps<cr>",                       desc = "Key Maps" },
-      { "<leader>sl",      "<cmd>Telescope loclist<cr>",                       desc = "Current window's Location List" },
-      { "<leader>sM",      "<cmd>Telescope man_pages<cr>",                     desc = "Man Pages" },
-      { "<leader>sm",      "<cmd>Telescope marks<cr>",                         desc = "Jump to Mark" },
-      { "<leader>so",      "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
-      { "<leader>sq",      "<cmd>Telescope quickfix<cr>",                      desc = "Quickfix" },
-      { "<leader>sQ",      "<cmd>Telescope quickfixhistory<cr>",               desc = "Quickfix History" },
-      { "<leader>sr",      "<cmd>Telescope resume<cr>",                        desc = "Resume" },
-      { "<leader>st",      "<cmd>Telescope treesitter<cr>",                    desc = "Treesitter" },
-      { "<leader>sw",      require("telescope.builtin").grep_string,           desc = "Word" },
-      { "<leader>sx",      require("telescope.builtin").diagnostics,           desc = "Diagnostics" },
+      { "<leader>sa", "<cmd>Telescope autocommands<cr>",              desc = "Auto Commands" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+      { "<leader>sc", "<cmd>Telescope command_history<cr>",           desc = "Command History" },
+      { "<leader>sC", "<cmd>Telescope commands<cr>",                  desc = "Commands" },
+      { "<leader>sE", "<cmd>Telescope symbols<cr>",                   desc = "Emoji" },
+      { "<leader>sg", require("telescope.builtin").live_grep, desc = "Find in Files (Grep)" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      { "<leader>sj", "<cmd>Telescope jumplist<cr>",  desc = "Jump List" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>",   desc = "Key Maps" },
+      { "<leader>sl", "<cmd>Telescope loclist<cr>", desc = "Current window's Location List" },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>",           desc = "Man Pages" },
+      { "<leader>sm", "<cmd>Telescope marks<cr>",               desc = "Jump to Mark" },
+      { "<leader>so", "<cmd>Telescope vim_options<cr>",         desc = "Options" },
+      { "<leader>sq", "<cmd>Telescope quickfix<cr>",            desc = "Quickfix" },
+      { "<leader>sQ", "<cmd>Telescope quickfixhistory<cr>",     desc = "Quickfix History" },
+      { "<leader>ss", "<cmd>Telescope resume<cr>",              desc = "Resume" },
+      { "<leader>st", "<cmd>Telescope treesitter<cr>",          desc = "Treesitter" },
+      { "<leader>sw", require("telescope.builtin").grep_string, desc = "Word" },
+      { "<leader>sx", require("telescope.builtin").diagnostics, desc = "Diagnostics" },
+      {
+        "<leader>sT",
+        function()
+          require("telescope.builtin").colorscheme({ enable_preview = true })
+        end,
+        desc = "Theme"
+      },
       -- { "<leader>ss", require("telescope.builtin").lsp_document_symbols, desc = "Goto Symbol", },
       -- {
       --   "<leader>sS",
