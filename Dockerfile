@@ -29,9 +29,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 # config poetry to use in project venv 
 RUN /root/.local/bin/poetry config virtualenvs.in-project true
 
-# install nvim 0.8.3
-# RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb \
-#   && apt install ./nvim-linux64.deb
 
 # install nvim 0.9.x
 RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb \
@@ -58,8 +55,7 @@ RUN git clone https://github.com/kentchiu/dotfile.git /root/.config/dotfile
 RUN git clone https://github.com/kentchiu/neovim_docker.git /root/.config/neovim_docker
 
 
-RUN ln -sf /root/.config/neovim_docker/nvim /root/.config/nvim \
-  && ln -sf /root/.config/dotfile/.gitconfig /root/.gitconfig \
+RUN ln -sf /root/.config/dotfile/.gitconfig /root/.gitconfig \
   && ln -sf /root/.config/dotfile/.tmux.conf /root/.tmux.conf \
   && ln -sf /root/.config/dotfile/.vimrc /root/.vimrc
 
@@ -71,6 +67,18 @@ RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
 
 RUN echo "alias vi='nvim'" >> ~/.zshrc
 RUN echo "PATH=/root/.local/bin:$PATH" >> ~/.zshrc
+
+
+RUN git clone https://github.com/kentchiu/nvim-config.git  ~/.config/kent-vim
+RUN git clone https://github.com/LazyVim/starter.git  ~/.config/lazy-vim
+RUN git clone https://github.com/LunarVim/LunarVim.git ~/.config/luar-vim
+RUN git clone https://github.com/AstroNvim/AstroNvim.git ~/.config/astro-vim
+
+###############################################################
+# Modify xxx-vim to choise which distribution you want to use #
+###############################################################
+RUN ln -sf ~/.config/astro-vim ~/.config/nvim
+
 
 # change default shell to zsh
 RUN chsh -s $(which zsh)

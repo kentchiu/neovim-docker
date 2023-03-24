@@ -1,22 +1,42 @@
-# neovim_docker
+# NeoVim Docker Image
 
-Config neovim as PDE in docker
+This Docker image contains several NeoVim distributions, including LazyVim, LunarVim, AstroNvim, and more. With this image, you can easily switch between different NeoVim distributions without having to install them individually.
+
+Included Distributions
+This Docker image includes the following NeoVim distributions:
+
+LazyVim
+LunarVim
+AstroNvim
+And more!
+
+Each distribution contains its own set of plugins and settings, so you can easily try out different configurations without having to change your local NeoVim installation.
+
+This image also includes:
+
+- python3
+- poetry (python package manager)
+- nodejs 18
+- lazygit
+- git
+- etc.
 
 ## Build
 
 ```bash
-docker build -t kentchiu/pde --build-arg CACHEBUST=$(date +%s) . 
+docker build -t nvim-playgroud --build-arg CACHEBUST=$(date +%s) . 
 ```
 
 ## Run
 
+You will be asked to set up the zsh theme [powerlevel10k](https://github.com/romkatv/powerlevel10k) during the initial setup. Afterward, all data will be persisted in a Docker volume called nvim.  
 
 ```bash
-docker volume create pde
+docker volume create nvim
 ```
 
 ```bash
-docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -p 5173:5173 -p 4200:4200 -p 8122:8122  -v pde:/root -v /home/kent/.ssh:/root/.ssh -ti kentchiu/pde
+docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -p 5173:5173 -p 4200:4200 -p 8122:8122  -v nvim:/root -v /home/kent/.ssh:/root/.ssh -ti nvim-playgroud 
 ```
 
 
@@ -24,34 +44,7 @@ docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -p 5173:5173 -p 4200:4200 -p 8
 
 ```bash
 docker rm -f $(docker ps -a -q)
-docker volume rm -f pde
+docker volume rm -f nvim
 ```
 
 
-## TODO
-
-- [] TODO machanizie in trouble.nvim (check <leader x> and <leader>st in lazyvim)
-- [] ut -> toogle options like lazyvim
-- [] remove buffer use :bdelete command in telescope buffers view
-- [] Find recent file only under current folder
-- [] spell check correct in quick fix or code aciton
-- [] spell check auto enable by file type
-- [] spell check toggle 
-- [x] dracula theme
-- [x] Tokyo night theme 
-- [x] File changes history (Lazy Git or Telescope)
-- [x] Insert mode by default in terminal
-- [x] slient exit terminal
-- [] telescope filter by file type
-- [x] auto-save
-- [x] telescope grep_string
-- [x] command history
-- [x] focus on curren buffer when toggle nvim-tree
-- [x] code format (ts)
-- [x] code format not regrade to tab stops
-- [x] code indent not in position(ts)
-- [x] keymap ft (find terminal) not work
-- [x] keymap uw (toggle word wrap)
-- [x] search highlight (/)
-- [x] jk not map to esc
-- [x] project scope diagnostics
