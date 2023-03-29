@@ -8,6 +8,8 @@ This Docker image includes the following NeoVim distributions:
 LazyVim
 LunarVim
 AstroNvim
+KentVim
+NvChadVim
 And more!
 
 Each distribution contains its own set of plugins and settings, so you can easily try out different configurations without having to change your local NeoVim installation.

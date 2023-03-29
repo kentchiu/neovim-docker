@@ -69,18 +69,41 @@ RUN echo "alias vi='nvim'" >> ~/.zshrc
 RUN echo "PATH=/root/.local/bin:$PATH" >> ~/.zshrc
 
 
-RUN git clone https://github.com/kentchiu/nvim-config.git  ~/.config/kent-vim
-RUN git clone https://github.com/LazyVim/starter.git  ~/.config/lazy-vim
-RUN git clone https://github.com/LunarVim/LunarVim.git ~/.config/luar-vim
-RUN git clone https://github.com/AstroNvim/AstroNvim.git ~/.config/astro-vim
+RUN git clone https://github.com/kentchiu/nvim-config.git ~/.config/kent-vim
+RUN git clone https://github.com/LazyVim/starter.git      ~/.config/lazy-vim
+RUN git clone https://github.com/LunarVim/LunarVim.git    ~/.config/lunar-vim
+RUN git clone https://github.com/AstroNvim/AstroNvim.git  ~/.config/astro-vim
+RUN git clone https://github.com/NvChad/NvChad            ~/.config/nvchad-vim
 
 ###############################################################
 # Modify xxx-vim to choise which distribution you want to use #
 ###############################################################
-RUN ln -sf ~/.config/astro-vim ~/.config/nvim
+# RUN ln -sf ~/.config/astro-vim ~/.config/nvim
+#
+# define aliases for nvim
+RUN echo "alias nvim-astro='NVIM_APPNAME=astro-vim nvim'" >> ~/.zshrc && \
+    echo "alias nvim-kent='NVIM_APPNAME=kent-vim nvim'" >> ~/.zshrc && \
+    echo "alias nvim-lazy='NVIM_APPNAME=lazy-vim nvim'" >> ~/.zshrc && \
+    echo "alias nvim-lunar='NVIM_APPNAME=lunar-vim nvim'" >> ~/.zshrc && \
+    echo "alias nvim-nvchad='NVIM_APPNAME=nvchad-vim nvim'" >> ~/.zshrc  
+
+# define function for nvim with fzf
+RUN echo "function nvims() {" >> ~/.zshrc && \
+    echo "  items=('default' 'astro-vim' 'kent-vim' 'lazy-vim' 'lunar-vim' 'nvchad-vim')" >> ~/.zshrc && \
+    echo "  config=\$(printf \"%s\\n\" \"\${items[@]}\" | fzf --prompt=\" Neovim Config  \" --height=50% --layout=reverse --border --exit-0)" >> ~/.zshrc && \
+    echo "  if [[ -z \$config ]]; then" >> ~/.zshrc && \
+    echo "    echo \"Nothing selected\"" >> ~/.zshrc && \
+    echo "    return 0" >> ~/.zshrc && \
+    echo "  elif [[ \$config == \"default\" ]]; then" >> ~/.zshrc && \
+    echo "    config=\"\"" >> ~/.zshrc && \
+    echo "  fi" >> ~/.zshrc && \
+    echo "  NVIM_APPNAME=\$config nvim \$@" >> ~/.zshrc && \
+    echo "}" >> ~/.zshrc
+
+# bind nvims function to Ctrl+a key
+RUN echo "bindkey -s '^a' 'nvims\\n'" >> ~/.zshrc
 
 
-# change default shell to zsh
 RUN chsh -s $(which zsh)
 
 CMD ["zsh"]
