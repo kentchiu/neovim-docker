@@ -100,7 +100,7 @@ RUN echo "function nvims() {" >> ~/.zshrc && \
     echo "}" >> ~/.zshrc
 
 # bind nvims function to Ctrl+a key
-RUN echo "bindkey -s '^a' 'nvims\\n'" >> ~/.zshrc
+RUN echo "bindkey -s '^a' 'nvims'" >> ~/.zshrc
 RUN echo "alias vi='nvims'" >> ~/.zshrc
 
 RUN chsh -s $(which zsh)
