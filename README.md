@@ -38,7 +38,7 @@ docker volume create nvim
 ```
 
 ```bash
-docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -p 5173:5173 -p 4200:4200 -p 8122:8122  -v nvim:/root -v /home/kent/.ssh:/root/.ssh -ti nvim-playgroud 
+docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -v nvim:/root -v /home/kent/.ssh:/root/.ssh -ti nvim-playgroud 
 ```
 
 

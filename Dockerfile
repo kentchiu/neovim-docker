@@ -1,11 +1,11 @@
 FROM ubuntu:22.04
 
-
 RUN apt-get update && apt-get upgrade -y
 
 # install command
-RUN apt-get install build-essential zsh tmux wget curl tree bat git \
-  ripgrep fd-find fzf python3-pip unzip tar zip unzip gzip locales jq -y 
+RUN apt-get install build-essential zsh tmux wget curl tree bat git tar zip unzip gzip locales fzf net-tools -y
+RUN apt-get install ripgrep fd-find python3-pip jq -y 
+RUN apt-get install cargo -y 
 
 RUN locale-gen en_US.UTF-8
 
@@ -65,7 +65,6 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTO
 RUN sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 RUN sed -i 's/plugins=()/plugins=(git zsh-autosuggestions poetry)/' ~/.zshrc
 
-RUN echo "alias vi='nvim'" >> ~/.zshrc
 RUN echo "PATH=/root/.local/bin:$PATH" >> ~/.zshrc
 
 
@@ -102,7 +101,7 @@ RUN echo "function nvims() {" >> ~/.zshrc && \
 
 # bind nvims function to Ctrl+a key
 RUN echo "bindkey -s '^a' 'nvims\\n'" >> ~/.zshrc
-
+RUN echo "alias vi='nvims'" >> ~/.zshrc
 
 RUN chsh -s $(which zsh)
 
