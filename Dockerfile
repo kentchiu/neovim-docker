@@ -6,6 +6,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install build-essential zsh tmux wget curl tree bat git tar zip unzip gzip locales fzf net-tools -y
 RUN apt-get install ripgrep fd-find python3-pip jq -y 
 RUN apt-get install cargo -y 
+RUN cargo install tree-sitter-cli
 
 RUN locale-gen en_US.UTF-8
 
@@ -31,8 +32,11 @@ RUN /root/.local/bin/poetry config virtualenvs.in-project true
 
 
 # install nvim 0.9.x
-RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb \
-  && apt install ./nvim-linux64.deb
+RUN cd /tmp && wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage && \
+    chmod u+x nvim.appimage && \
+    ./nvim.appimage --appimage-extract && \
+    mv squashfs-root ~/.local/bin && \
+    ln -s ~/.local/bin/squashfs-root/usr/bin/nvim ~/.local/bin/nvim
 
 # install lazygit 
 RUN cd /tmp && LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
