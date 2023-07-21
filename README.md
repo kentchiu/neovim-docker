@@ -23,6 +23,10 @@ This image also includes:
 - git
 - etc.
 
+## Screenshot
+
+![](./2023-07-21_008.gif)
+
 ## Build
 
 ```bash
