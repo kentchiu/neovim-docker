@@ -30,7 +30,7 @@ This image also includes:
 ## Build
 
 ```bash
-docker build -t nvim-playgroud --build-arg CACHEBUST=$(date +%s) . 
+docker build -t nvim-playground --build-arg CACHEBUST=$(date +%s) . 
 ```
 
 ## Run
@@ -42,7 +42,7 @@ docker volume create nvim
 ```
 
 ```bash
-docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -v nvim:/root -v /home/kent/.ssh:/root/.ssh -ti nvim-playgroud 
+docker run -e TERM -e COLORTERM -e LC_ALL=C.UTF-8 -v nvim:/root -v /home/kent/.ssh:/root/.ssh -ti nvim-playground 
 ```
 
 
